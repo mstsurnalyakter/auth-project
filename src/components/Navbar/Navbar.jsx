@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom"
+import {  NavLink } from "react-router-dom"
 
 
 const Navbar = () => {
   const navLink = (
     <>
-      <Link to={"/"}>Home</Link>
-      <Link to={"/register"}>Register</Link>
-      <Link to={"/login"}>Login</Link>
-      <Link to={"/contact"}>Contact</Link>
+      <NavLink  className={({ isActive }) =>
+ isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+  } to={"/"}>Home</NavLink>
+      <NavLink  className={({ isActive }) =>
+ isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+  } to={"/register"}>Register</NavLink>
+      <NavLink  className={({ isActive }) =>
+ isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+  } to={"/login"}>Login</NavLink>
+      <NavLink  className={({ isActive }) =>
+ isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+  } to={"/contact"}>Contact</NavLink>
     </>
   );
   return (
