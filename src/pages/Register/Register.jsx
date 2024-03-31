@@ -1,13 +1,30 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Register = () => {
+
+  const {createUser} = useContext(AuthContext);
+  console.log(createUser);
+
     const handleSubmit = (e) => {
       e.preventDefault();
       const name = e.target.name.value;
       const email = e.target.email.value;
       const password = e.target.password.value;
       console.log(name,email, password);
+
+      // create user in firebase
+      createUser(email,password)
+      .then(result=>{
+        console.log(result.user);
+      })
+      .catch(error=>{
+        console.error(error)
+      })
+
+
     };
   return (
     <div className="hero min-h-[500px] mb-20 bg-base-200">
@@ -60,11 +77,11 @@ const Register = () => {
             </div>
             <div className="form-control mt-6">
               <button type="submit" className="btn btn-primary">
-                Login
+                Register
               </button>
             </div>
             <p>
-             Already here ? Please
+              Already here ? Please
               <Link to={"/login"}>
                 <button className="btn btn-link">Login</button>
               </Link>

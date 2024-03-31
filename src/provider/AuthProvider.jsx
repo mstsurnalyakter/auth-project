@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import auth from '../firebase/firebase.config';
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 
-export const AuhContext = createContext(null)
+
+export const AuthContext = createContext(null)
 
 const AuthProvider = ({children}) => {
 
@@ -14,13 +15,32 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
+    const singInUser = (email,password) =>{
+        return signInWithEmailAndPassword(auth,email,password)
+    }
 
-    const authInfo = { user,createUser }
+
+    const logOut = () =>{
+      return  signOut(auth)
+    }
+
+useEffect(()=>{
+  const unSubscribe = onAuthStateChanged(auth, currentUser=>{
+    setUser(currentUser);
+    console.log('object',currentUser);
+
+    })
+    return ()=>{
+        unSubscribe();
+    }
+},[])
+
+    const authInfo = { user, createUser, singInUser, logOut };
 
 
-  return <AuhContext.Provider value={authInfo}>
+  return <AuthContext.Provider value={authInfo}>
     {children}
-    </AuhContext.Provider>;
+    </AuthContext.Provider>;
 }
 
 
