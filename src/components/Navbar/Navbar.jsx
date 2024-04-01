@@ -17,18 +17,66 @@ const Navbar = () => {
 
   const navLink = (
     <>
-      <NavLink  className={({ isActive }) =>
- isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
-  } to={"/"}>Home</NavLink>
-      <NavLink  className={({ isActive }) =>
- isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
-  } to={"/register"}>Register</NavLink>
-      <NavLink  className={({ isActive }) =>
- isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
-  } to={"/login"}>Login</NavLink>
-      <NavLink  className={({ isActive }) =>
- isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
-  } to={"/contact"}>Contact</NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+        }
+        to={"/"}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+        }
+        to={"/register"}
+      >
+        Register
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+        }
+        to={"/login"}
+      >
+        Login
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+        }
+        to={"/order"}
+      >
+        Order
+      </NavLink>
+      {user &&
+        <>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+            }
+            to={"/profile"}
+          >
+            Profile
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+            }
+            to={"/dashboard"}
+          >
+            Dashboard
+          </NavLink>
+        </>
+      }
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "underline bg-purple-600 text-white px-3 py-2" : ""
+        }
+        to={"/contact"}
+      >
+        Contact
+      </NavLink>
     </>
   );
   return (

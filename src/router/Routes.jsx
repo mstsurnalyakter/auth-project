@@ -4,6 +4,10 @@ import Contact from "../pages/Contact/Contact";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Order from "../components/Order/Order";
+import PrivateRoute from "./PrivateRoute";
+import Profile from "../pages/Profile/Profile";
+// import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -24,8 +28,25 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/order",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <Order />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
     ],
   },
